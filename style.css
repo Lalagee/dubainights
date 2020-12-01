@@ -1,0 +1,896 @@
+/*
+Theme Name: Salient Child Theme
+Theme URI: http: //mysite.com/
+Description: This is a custom child theme for Salient
+Author: My Name
+Author URI: http: //mysite.com/
+Template: salient
+Version: 0.1
+*/
+
+/***********CUSTOM PAGE CSS************************/
+.loading {
+    background: rgb(0 0 0 / 85%);
+    height: 100vh;
+}
+/**********CUSTOM CHECK BOX CSS************/
+.mycheck {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.mycheck input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+	border-radius:3px;
+}
+.mycheck:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.mycheck input:checked ~ .checkmark {
+  background-color: #ffffff;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.mycheck input:checked ~ .checkmark:after {
+  display: block;
+}
+.mycheck .checkmark:after {
+  left: 6px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid #1f1f1f;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/**********CUSTOM CHECK BOX CSS************/
+.side_b_box {
+    margin-bottom: 20px;
+}
+.custom-page {
+    background-color: #0b0b0b;
+    display: inline-block;
+    width: 100%;
+}
+.evens_body {
+    display: inline-block;
+    padding: 50px 30px;
+}
+.event-header {
+    margin: 0 !important;
+    background-color: #1f1f1f;
+    padding: 20px 10px;
+}
+.event-header ul {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.event-header ul li {
+    display: inline-block;
+    margin: 0px 10px;
+}
+.event-header ul.sort-by {
+    float: right;
+}
+.side-baaar {
+    background-color: #151313;
+}
+.search_box.side_b_box button:hover i {
+    color: #fff !important;
+}
+.search_box.side_b_box button i {
+    transition:.5s !important;
+}
+.search_box.side_b_box form {
+    position: relative;
+}
+.search_box.side_b_box button {
+    border: none !important;
+    background-color: transparent;
+    color: #757575;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0px, -50%);
+    cursor: pointer;
+    padding: 7px 7px !important;
+}
+.event-heading {
+    margin-bottom: 30px;
+}
+.search_box input[type="text"] {
+    background-color: #363434;
+    border: none !important;
+    border-radius: 0 !important;
+}
+.gb-color {
+    background-color: #222020;
+    padding: 20px;
+}
+.custom-page h1, .custom-page h3 {
+    font-family: ken !important;
+}
+.custom-page h3 {
+    font-size: 25px !important;
+    color: #c79317;
+    margin: 15px 0px !important;
+}
+.custom-page h1 {
+    color: #d69e20;
+    font-size: 55px !important;
+}
+ul.event-date {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+ul.event-date li {
+    display: inline-block;
+}
+ul.event-date li a {
+    background-color: #fff;
+    color: #0b0b0b;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 0px 5px;
+    display: inline-block;
+    border-radius: 3px;
+    font-weight: 500;
+	transition:.5s !important;
+}
+ul.event-date li a:hover {
+    background-color: #d69e20;
+}
+ul.event-date li a.Today {
+    background-color: #d69e20 !important;
+}
+.event-check {
+    margin-top: 25px;
+}
+/* .event-check label.mycheck:last-child {
+    margin-bottom: 0 !important;
+} */
+.side-baaar h3 {
+    text-transform: uppercase;
+}
+a.more-info-btn {
+    font-family: poppins;
+    color: #0b0b0b;
+    padding: 7px 35px;
+    display: inline-block;
+    background: linear-gradient(to left, #d69e20 50%, #fff 50%);
+    background-size: 212%;
+    background-position: right bottom;
+    transition: all .5s ease;
+}
+a.more-info-btn:hover {
+    background-position: left bottom;
+    text-decoration: none;
+    background-size: 210%;
+}
+.d_flex {
+    display: flex;
+    align-items: center;
+}
+h3.margin-top-0 {
+    margin-top: 0 !important;
+}
+.onclick_full_width {
+    background-color: #151515;
+    border: 1px solid #3e3e3e;
+    margin-bottom: 15px;
+}
+.event-disc h3 {
+    margin-top: 0 !important;
+}
+.event-disc {
+    padding: 20px;
+}
+.events-row .d_flex:last-child {
+    margin-bottom: 0 !important;
+}
+.onclick_full_width:hover img {
+    filter: brightness(0.5);
+    transform: scale(1.1);
+}
+
+.img-box {
+    overflow: hidden;
+}
+.events-pst .img-box img {
+    width: 100% !important;
+    margin-bottom: -5px !important;
+}
+img{transition:.5s !important;}
+
+.event-toggle {
+    display: none;
+}
+a.more-events-btn:hover {
+    color: #fff !important;
+}
+a.more-events-btn {
+    font-family: 'ken';
+    font-size: 16px;
+    text-transform: uppercase;
+    border-bottom: 1px solid;
+    transition: .5s !important;
+}
+.clear-btn {
+    margin-top: 15px;
+}
+.event-toggle {
+    margin-top: 15px;
+}
+.events-row {
+    display: inline-block;
+}
+
+
+
+
+
+@media (max-width: 1600px) {}
+@media (max-width: 1366px) {}
+@media (max-width: 1280px) {}
+@media (max-width: 1024px) {}
+@media (max-width: 800px) {
+.event-header {
+    text-align: center;
+}
+.event-header ul.sort-by {
+    float: unset;
+}	
+}
+@media (max-width: 768px) {}
+@media (max-width: 480px) {}
+@media (max-width: 414px) {
+.event-header ul li {
+    display: inline-block;
+    margin: 0px 5px;
+}	
+}
+@media (max-width: 375px) {}
+@media (max-width: 360px) {}
+
+
+/***********CUSTOM PAGE CSS************************/
+
+
+
+
+
+
+
+
+
+
+ul#menu-footr-4 {
+    column-count: 2;
+}
+
+body .toggle >div p {
+    color: #fff;
+}
+body .toggle >div {
+    background: #000 !important;
+}
+
+header#top {
+    background-color: rgba(0,0,0,0.4) !important;
+}
+#billnior_sec .col_mansion p br {
+    display: none !important;
+}
+#billnior_sec .col_mansion {
+    padding-top: 29px !important;
+}
+#billnior_sec .col_mansion a:hover {
+    background-color: #d59c1d !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+#billnior_sec .col_mansion a {
+    background-color: transparent !important;
+    border: 2px solid #fff !important;
+    padding: 11px 28px !important;
+}
+#billnior_sec .col_mansion h5 {
+    background-image: linear-gradient(to right, #d59b1b , #e3b844);
+    display: inline-block !important;
+    padding: 11px 29px !important;
+    border-radius: 30px !important;
+    letter-spacing: 2px !important;
+    color: #000 !important;
+    margin: 25px 0px !important;
+}
+#billnior_sec .owl-dot span {
+    border: 1px solid !important;
+    height: 10px !important;
+    width: 10px !important;
+}
+#billnior_sec .owl-dot.active span {
+    background-color: #d59b1b !important;
+    border: none !important;
+    transform: none !important;
+}
+#billnior_sec .owl-theme .owl-nav.disabled+.owl-dots{
+	margin-top:0px !important;
+	
+}
+#billnior_sec .nectar-milestone .number {
+    font-family: barlow !important;
+}
+#billnior_sec .nectar-milestone .number:after {
+    content: url(https://dev109.onlinetestingserver.com/DubaiNight/wp-content/uploads/2020/09/colen-image_03.png);
+    position: relative;
+    left: 21px !important;
+}
+#billnior_sec .miltstro .number.default:after {
+    display: none !important;
+}
+#azure_sec img {
+    position: absolute !important;
+    right: 0px !important;
+    top: 0px !important;
+}
+#azure_sec {
+    background-color: rgba(255,255,255,0.2) !important;
+    padding: 48px 0px 25px 50px !important;
+	margin: 20px !important;
+}
+#azure_sec img {
+    position: absolute !important;
+    right: 130px !important;
+    top: -37px !important;
+}
+#date_sec {
+    background-color: rgba(255,255,255,0.2) !important;
+    padding: 15px 0px 15px 50px !important;
+}
+#upcomming_sec p {
+    text-transform: uppercase !important;
+}
+#azure_sec a {
+    padding: 11px 32px !important;
+    background-color: transparent !important;
+    border: 2px solid #fff !important;
+}
+#upcomming_sec .btn_all {
+    margin: 0px auto !important;
+    display: table !important;
+    background-color: transparent !important;
+    border: 1px solid !important;
+    padding: 13px 27px !important;
+}
+#upcomming_sec .btn_all:hover {
+    background-color: #d59c1c !important;
+    transform: none !important;
+}
+#azure_sec:hover a {
+    background-image: linear-gradient(to right, #d39715 , #e5bb48);
+    color: #000 !important;
+    border: none !important;
+    box-shadow: 0 0 8px #6a6a6a;
+    font-weight: 700 !important;
+}
+#azure_sec:hover p {
+    color: #000 !important;
+}
+#azure_sec:hover {
+    background-image: linear-gradient(to right, #d9a326 , #d69e1f);
+}
+#nightlife_sec .txt_toy a {
+    position: relative;
+    top: 20px !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    border: 1px solid #fff !important;
+    padding: 7px 14px !important;
+    border-radius: 30px !important;
+}
+#nightlife_sec .txt_toy {
+    position: absolute !important;
+    top: 330px !important;
+    left: 40px !important;
+    background-color: rgba(0,0,0,0.2);
+    padding-bottom: 28px !important;
+	opacity: 0 !important;
+	
+	
+}
+#nightlife_sec .col_life:hover .txt_toy {
+    opacity: 1 !important;
+}
+#nightlife_sec .owl-dot span {
+    border: 1px solid !important;
+    height: 10px !important;
+    width: 10px !important;
+}
+#nightlife_sec .owl-dot.active span {
+    background-color: #d59b1b !important;
+    border: none !important;
+    transform: none !important;
+}
+#daylife_sec .owl-dot span {
+    border: 1px solid !important;
+    height: 10px !important;
+    width: 10px !important;
+}
+#daylife_sec .owl-dot.active span {
+    background-color: #d59b1b !important;
+    border: none !important;
+    transform: none !important;
+}
+#photos_sec .col_sat a {
+    position: absolute !important;
+    right: 37% !important;
+    left: 37% !important;
+    text-align: center !important;
+    top: 35% !important;
+    padding: 9px 0px !important;
+    background-color: transparent !important;
+    border: 2px solid #fff !important;
+    opacity: 0 !important;
+	transition:.9s !important;
+}
+.col_aug {
+    padding-right: 20px !important;
+}
+.col_dubai {
+    padding-top: 0px !important;
+    padding-left: 20px !important;
+}
+#photos_sec .col_sat:hover img {
+    filter: brightness(0.5);
+}
+#photos_sec .col_sat:hover a {
+    opacity: 1 !important;
+}
+#photos_sec .col_sat {
+    margin-bottom: 40px;
+}
+#photos_btn a:hover {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+#photos_btn a {
+    background-color: #ff9900 !important;
+    color: #000 !important;
+    padding: 10px 25px !important;
+    border: 2px solid #fff !important;
+}
+#explore_sec img {
+    width: 95% !important;
+}
+#faqs_sec .toggle.default a {
+    color: #fff !important;
+    font-size: 20px !important;
+    border-bottom: 1px solid #5e5e5e !important;
+    padding-left: 0px !important;
+}
+#faqs_sec .toggle h3 a i {
+    position: absolute;
+    left: 805px;
+}
+#faqs_sec .icon-plus-sign:before{
+	    content: "\f107" !important;
+	color:#ff9900 !important;
+}
+#faqs_sec .toggle.default.open a {
+    background-color: transparent !important;
+}
+#faqs_sec .icon-minus-sign:before{
+	content: "\f106" !important;
+	color:#ff9900 !important;
+}
+#contact_sec h4 {
+    line-height: 0px !important;
+    margin-bottom: -15px !important;
+}
+#contact_sec h4 {
+    line-height: 0px !important;
+    margin-bottom: -15px !important;
+}
+#contact_sec input.wpcf7-form-control.wpcf7-text.wpcf7-validates-as-required {border-radius: 0px !important;border-left: 1px solid #fff !important;border-bottom: 1px solid #fff !important;margin-bottom: 10px !important;}
+#contact_sec input.wpcf7-form-control.wpcf7-text.wpcf7-validates-as-required::placeholder {
+    color: #fff !important;
+}
+#contact_sec input.wpcf7-form-control.wpcf7-text.wpcf7-validates-as-required:hover {
+    border-color: #ff9900 !important;
+    border-top: none !important;
+    border-right: none !important;
+}
+#contact_sec input.wpcf7-form-control.wpcf7-submit {
+    background-color: transparent !important;
+    border: 1px solid #fff !important;
+    padding: 12px 18px !important;
+    margin-top: 30px !important;
+}
+
+#contact_sec input.wpcf7-form-control.wpcf7-submit:hover {
+    background-color: #ff9900 !important;
+}
+.wpcf7-response-output {
+    border: none !important;
+    background-color: transparent !important;
+}
+.socft li {
+    display: inline-block !important;
+    margin-right: 25px !important;
+}
+
+.socft i {
+    margin-right: 7px !important;
+}
+#footer-outer #footer-widgets {
+    border-bottom: none!important;
+    border-top: 1px solid #787777 !important;
+}
+#contact_sec .txt_select {
+    background-color: #ff9900 !important;
+    color: #000 !important;
+    font-weight: 500 !important;
+    padding: 6px 22px !important;
+}
+#nectr_sec a {
+    padding: 15px 24px !important;
+}
+#billnior_sec img:hover {
+    transform: scale(0.9) !important;
+}
+#billnior_sec img {
+    transition: .9s !important;
+}
+#nightlife_sec img:hover {
+    transform: scale(0.9) !important;
+}
+#nightlife_sec img {
+    transition: .9s !important;
+}
+
+#daylife_sec img:hover {
+    transform: scale(0.9) !important;
+}
+#daylife_sec img {
+    transition: .9s !important;
+}
+#faqs_sec h1 {
+    font-size: 53px !important;
+}
+
+#photos_sec img {
+    width: 100% !important;
+}
+#explore_sec img {
+    transition: .9s !important;
+}
+
+#explore_sec img:hover {
+    transform: scale(0.9) !important;
+}
+
+#footer-outer[data-cols="1"][data-disable-copyright="false"] #copyright {
+    padding-bottom: 21px !important;
+}
+.socft {
+    position: absolute !important;
+    z-index: 999 !important;
+    left: 723px !important;
+}
+.mc_bottomnav.my-calendar-footer {
+    display: none !important;
+}
+
+@media (max-width: 1600px) {
+	
+.socft {
+    left: 550px !important;
+    top: 64%;
+}
+	
+}
+@media (max-width: 1440px) {
+	.socft {
+    left: 612px !important;
+}
+	
+}   
+@media (max-width: 1366px) {
+	#photos_sec .col_sat a{
+		top: 27% !important;
+	}
+	
+	.socft {
+    left: 430px !important;
+}
+}
+@media (max-width: 1280px) {
+	#nightlife_sec .txt_toy {
+    position: absolute !important;
+    top: 281px !important;
+	}
+	#nightlife_sec .txt_toy p br {
+    display: none !important;
+}
+		#faqs_sec .toggle h3 a i {
+    position: absolute;
+    left: 703px;
+}
+	.socft {
+    left: 392px !important;
+}
+	
+}
+@media (max-width: 1024px) {
+	#billnior_sec .nectar-milestone .number {
+    font-family: barlow !important;
+    font-size: 44px !important;
+}
+	#azure_sec {
+    background-color: rgba(255,255,255,0.2) !important;
+    padding: 48px 0px 23px 30px !important;
+}
+	#azure_sec p {
+    font-size: 14px !important;
+}
+	#azure_sec img {
+    position: absolute !important;
+    right: 67px !important;
+    top: -37px !important;
+}
+	
+	#billnior_sec .nectar-milestone .number::after{
+		display:none !important;
+	}
+	#azure_sec img {
+    position: unset !important;
+}
+	#faqs_sec .toggle h3 a i {
+    position: absolute;
+    left: 533px;
+}
+.socft {
+    left: 260px !important;
+    top: 73%;
+}
+	
+}
+@media (max-width: 800px) {
+#date_sec .vc_col-sm-4 {
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0px !important;
+    padding-left: 0px !important;
+}
+	#date_sec .vc_col-sm-2 {
+    width: 100% !important;
+    text-align: center !important;
+		margin:0px !important;
+}	
+	#date_sec {
+    background-color: rgba(255,255,255,0.2) !important;
+    padding: 15px 0px 25px 0px !important;
+}
+	#photos_sec img {
+    margin: 0px auto !important;
+    display: table !important;
+}
+	#photos_sec .col_sat a {
+    top: 32% !important;
+}
+	.col_aug {
+    padding-right: 144px !important;
+}
+	.col_dubai {
+    padding-left: 145px !important;
+    padding-top: 9px !important;
+}
+	#azure_sec .vc_col-sm-4 {
+    text-align: center !important;
+	margin-left:0px !important;
+}
+#azure_sec .vc_col-sm-4 img {
+    margin: 0px auto !important;
+}
+	#azure_sec .vc_col-sm-2 {
+    width: 100% !important;
+	text-align:center !important;
+		margin-left:0px !important;
+ }
+	#nightlife_sec .txt_toy p br {
+    display: block !important;
+}
+	#nightlife_sec .txt_toy {
+    position: absolute !important;
+    top: 331px !important;
+    left: 150px !important;
+}
+	#billnior_sec {
+    text-align: center !important;
+}
+	#nightlife_sec p br {
+    display: none !important;
+}
+	#daylife_sec p br {
+    display: none !important;
+}
+	#daylife_sec {
+    text-align: center !important;
+	}
+	#sat_sec .col_aug p {
+    position: relative;
+    top: -46px !important;
+}
+#billnior_sec img {
+    margin: 0px auto !important;
+}
+#faqs_sec .toggle h3 a i {
+    position: absolute;
+    left: 573px;
+}
+	#billnior_sec img{
+		Width:50% !important;
+	}
+#nightlife_sec img
+	 {
+    transition: .9s !important;
+    width: 68%;
+    margin: 0px auto !important;
+}
+	#daylife_sec img{
+		width:68% !important;
+		margin:0px auto !important;
+	}
+	
+	
+	
+	.nectar-milestone {
+    margin: 0px auto !important;
+    display: table !important;
+		text-align:center !important;
+}
+.socft {
+    left: 151px !important;
+    top: 79%;
+}
+	
+}
+@media (max-width: 768px) {
+/* 	.socft {
+    left: 280px !important;
+} */
+	
+	
+}
+@media (max-width: 480px) {
+	#faqs_sec .toggle h3 a i {
+    position: absolute;
+    left: 390px;
+}
+	.col_dubai {
+    padding-left: 14px !important;
+	}
+	#faqs_sec h1 {
+    font-size: 25px !important;
+    line-height: 25px !important;
+}
+	#nightlife_sec .txt_toy {
+    position: absolute !important;
+    top: 291px !important;
+    left: 50px !important;
+}
+	#nightlife_sec img{
+		width:96% !important;
+	}
+	
+	.socft li {
+    display: inline-block !important;
+    margin-right: 13px !important;
+}
+.socft {
+    left: 50px !important;
+    top: 87%;
+}
+.socft li {
+    margin: 0px !important;
+}
+.socft img {
+    width: 82%;
+}	
+	
+	
+	
+}
+@media (max-width: 414px) {
+	
+	#faqs_sec .toggle.default a{
+		    font-size: 17px !important;
+	}
+	#faqs_sec .toggle h3 a i {
+    position: absolute;
+    left: 290px;
+}
+	#nightlife_sec .txt_toy {
+    position: absolute !important;
+    top: 221px !important;
+    left: 26px !important;
+}
+	#nightlife_sec .txt_toy p br {
+    display: none !important;
+}
+.socft {
+    left: -8px !important;
+    top: 84%;
+}
+
+	.socft {
+    display: none !important;
+}
+	div#copyright {
+    padding: 0px 0px !important;
+}
+	
+}
+@media (max-width: 375px) {
+	#photos_sec .col_sat a {
+    top: 25% !important;
+    right: 27% !important;
+    left: 27% !important;
+}
+	#sat_sec .col_aug p {
+    position: relative;
+    top: -46px !important;
+    left: 124px !important;
+}
+	
+	.socft {
+    left: 101px !important;
+}
+	
+	
+}
+@media (max-width: 360px) {
+	.socft {
+    left: 91px !important;
+}
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
