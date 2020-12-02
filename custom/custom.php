@@ -10,13 +10,24 @@
 // var_dump(get_post_meta(1519,'located',true));
 // exit;
 function show_all_events($post_ids=''){
-	// if (!empty($post_ids)) {
-	// 	# code...
-	// }
-	// else{
-	// }
 	$locations = array();
 	$count = 0;
+	if (!empty($post_ids)){
+
+		foreach ($post_ids as $value) {
+			$post_id = $value;
+			$address = get_post_meta($post_id,'located',true);
+			$lat = $address['lat'];
+			$lng = $address['lng'];
+			$locations[$count]['lat'] = $lat;
+			$locations[$count]['lng'] = $lng;
+			$count++;
+
+
+		} //end of for each loop
+	 }
+ else{
+ 
 	$the_query =  new WP_Query( array(
 							'posts_per_page' 	=> -1,
                             'post_type'       	=> 'event_custom',
@@ -42,7 +53,9 @@ function show_all_events($post_ids=''){
       				$count++;
       			}
   		}
+  	} // end of else
   		return $locations;
+
 }
 
 add_action('wp_enqueue_scripts','custom_scripts');
@@ -167,16 +180,24 @@ add_action('wp_ajax_search_post_by_tax','search_post_by_tax');
 add_action('wp_ajax_nopriv_search_post_by_tax','search_post_by_tax');
 function search_post_by_tax(){
 	
-	$maps = false;
+	$maps = $_POST['map'];
 	$cat_ids_arr = $_POST['cat_ids'];
 	$event_date = $_POST['find_by_date'];
-
 	$srange = str_replace('-','',$_POST['srdate']);
 	$erange = str_replace('-','',$_POST['erdate']);
-	if (empty($erange)) {
-		 $erange = $srange;
+	if (empty($srange) && empty($erange) && empty($event_date)) {
+		 $meta_query_dates = array();
 	}
-	if (is_null($event_date)) {
+	elseif (empty($srange)) {
+		 $meta_query_dates = array(
+			'key' => 'edate',
+        	'value' => $event_date
+		);
+	}
+	elseif (is_null($event_date)) {
+		if (empty($erange)) {
+			$erange = $srange;
+		}
 		$meta_query_dates = array(
 			'key'     => 'edate',
             'value'   => [$srange, $erange],
@@ -184,20 +205,15 @@ function search_post_by_tax(){
             'type'    => 'DATE'
 		);
 	}
-	if (empty($erange)) {
-		$meta_query_dates = array(
-			'key' => 'edate',
-        	'value' => $event_date
-		);
-	}
+
 	                  
 		$args = array(
 						'post_type' => 'event_custom',
 						'posts_per_page' => -1,
 						'meta_query'      => array(
                         'relation' => 'OR',
-		                    $meta_query_dates
-	                 ),
+		                 $meta_query_dates
+	                 		),
 						'relation' => 'OR',
 	           			'tax_query' => array(
 						'relation' => 'OR',
@@ -219,29 +235,35 @@ function search_post_by_tax(){
                 ),
 		);
 
-				$meta_query_range = array(
-						'meta_query'      => array(
-                        'relation' => 'OR',
-	                     array(
-	                        'key'     => 'edate',
-		                    'value'   => [$srange, $erange],
-		                    'compare' => 'BETWEEN',
-		                    'type'    => 'DATE'
-	                   )
-	                 ),
-				);
+				// $meta_query_range = array(
+				// 		'meta_query'      => array(
+    //                     'relation' => 'OR',
+	   //                   array(
+	   //                      'key'     => 'edate',
+		  //                   'value'   => [$srange, $erange],
+		  //                   'compare' => 'BETWEEN',
+		  //                   'type'    => 'DATE'
+	   //                 )
+	   //               ),
+				// );
 
 		// if (!empty($cat_ids_arr) || !empty($test_date)){
 		$unset_this_from_query = array(
 				'tax_query' => $cat_ids_arr,
 				// 'meta_query' => $event_date,
 			);
+		
+
 			foreach ($unset_this_from_query as $arg_key => $post_value) {
 				if (empty($post_value)) {
 					unset($args[$arg_key]);
 				}
 
+
 			 } 
+			
+			 // var_dump($args);
+			 // exit;
 			 // if (!empty($erange)) {
 			 // 	array_push($args,$meta_query_range);
 			 // }
@@ -281,7 +303,9 @@ function search_post_by_tax(){
 									$divcalss = 'col span_4 col_last onclick_full_width';	
 								}
 								
+								
 								$post_id 		= get_the_ID();
+								$post_ids[$counter] =$post_id;
 								$title 			= get_the_title();
 								$descrip    	= get_the_content();
 								$event_date 	= get_post_meta( $post_id, 'edate', true);
@@ -312,22 +336,25 @@ function search_post_by_tax(){
 								$counter++;
 								
 		}
-			if ($maps) {
-				echo "maps";
-					// $response['lat'] = $lat;
-					// $response['long'] = $long;
-					// $response['status'] = true;
-				# code...
+			if ($maps =='true') {
+
+				$location = show_all_events($post_ids);
+				$response['locations'] = $location;
+				$response['status'] = true;
+				$response['maps'] = true;
+
 			}
 			else{
 					$response['html'] = $html;
 					$response['status'] = true;
+					$response['maps'] = false;
 			}
 		
 	}
 	else{
 		$response['html'] = '<p><b>No events found!</b></p>';
 		$response['status'] = false;
+		$response['maps'] = false;
 	}
 		return response_json($response);
 

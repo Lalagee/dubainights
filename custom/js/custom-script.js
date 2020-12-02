@@ -3,7 +3,7 @@
   const uluru = { lat: 25.276987, lng: 55.296249};
         // The map, centered at Uluru
         const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 6,
+          zoom: 12,
           center: uluru,
         });
         // The marker, positioned at Uluru
@@ -11,15 +11,9 @@
         //   position: {lat: 25.2531745, lng: 55.3656728 },
         //   map: map,
         // });
-          var locations = the_ajax_script.show_all_posts;
+          var locations = the_ajax_script.show_all_posts; //for all locations
          console.log(locations);
-         const markers = locations.map((location, i) => {
-
-          // this.addListener("click", () => {
-          //     map.setZoom(8);
-          //     map.setCenter(this.getPosition());
-          //   });
-
+         var markers = locations.map((location, i) => {
         return new google.maps.Marker({
          position: location,
            map: map,
@@ -48,8 +42,15 @@
      onClose:function() {}
  });
 }
+  $(".map-btn").click(function(){
+    $(".googlemap").show();
+    $(".events-pst").hide();
+  })
+
 	$(".scheckbox,.sradio,.rdate").change(function(){
       run_waitMe();
+       maps = false;
+
 
     if ($(this).hasClass('rdate')) {
       $('input[name="when"]').prop('checked', false);
@@ -59,19 +60,20 @@
       $('.rdate').val('');
 
     }
+    if (!$(".googlemap").is(":hidden")) {
+         maps = true;
+    }
 		 var dataa = new Array();
         $(".scheckbox:checked").each(function (index, element) {
            	 	dataa[this.name] = $(this).val();
              
 		}); 
+        console.log("data",dataa);
 		var date_selected = $('input[name="when"]:checked').val();
     var srdate = $('input[name="srdate"]').val();
     var erdate = $('input[name="erdate"]').val();
 
-       // if (maps) {
-       // 	maps = true;
-       // }
-       // console.log(typeof(dataa))
+  
        var test = $(".scheckbox:checked").val();
        $.ajax({
 				type:"POST",
@@ -80,6 +82,7 @@
               find_by_date :date_selected, //date single
               srdate :srdate, //start date
               erdate :erdate, //end date
+              map    :maps, //flag for maps(for adjustment of maps marker on search option or filters)
               action: 'search_post_by_tax'
             },
 				// data: serialize_form,
@@ -87,31 +90,38 @@
 				success: function (response) {	
 					$(".waitmeclass").waitMe("hide");
 					var status = response.status;
-                        console.log(response);
-                        // if (status) {
-
-                        	$(".events-pst.grid").html('');
-                        	$(".events-pst.grid").html('<div class="events-row">'+response.html+'</div>');
-                       
-                        
-                        // } else {
-                        
-                        // }
-                    },
-                    error: function (errorThrown) {
-                    	console.log('error');
-                    	console.log(errorThrown);
-                    },
-                });
+              console.log(response);
+              // if (status) {
+                if (response.maps) {
+                  const uluru = { lat: 25.276987, lng: 55.296249};
+        // The map, centered at Uluru
+                  const mapx = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 10,
+                    center: uluru,
+                  });
+                  var locationx = response.locations;
+                  var markers = locationx.map((location, i) => {
+                      return new google.maps.Marker({
+                       position: location,
+                       map: mapx, 
+                      });
+                    });
+                    }
+                else{
+                    $(".events-pst.grid").html('');
+                    $(".events-pst.grid").html('<div class="events-row">'+response.html+'</div>');  
+                }
+// 
+              // }
+                },
+                error: function (errorThrown) {
+                	console.log('error');
+                	console.log(errorThrown);
+                },
+            });
 		 // console.log("test",test);
 		 // console.log("dataa",dataa);
 })
-	$(".map-btn").click(function(){
-		// $(".googlemap").fadeIn();
-		// $(".events-pst").fadeOut();
-		$(".googlemap").show();
-		$(".events-pst").hide();
-	})
-		
+
 
 })(jQuery);

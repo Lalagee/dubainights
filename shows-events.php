@@ -162,27 +162,27 @@ $h_url = home_url();
 
 								 	?>
 						<?php
-									$counter = 1;
-									if ( $the_query->have_posts() ) {
-		                      			while ( $the_query->have_posts() ) {
-		                      				$the_query->the_post();
-												$divcalss = "col span_4 onclick_full_width one-fourths clear-both";
-												if($counter%3 ==0)
-												$divcalss = "col span_4 col_last onclick_full_width";
-												$post_id 		= get_the_ID();
-												$title 			= get_the_title();
-												$descrip    	= get_the_content();
-												$event_date 	= get_post_meta( $post_id, 'edate', true);
-												$event_stime	= get_post_meta( $post_id, 'stime', true);
-												$event_etime 	= get_post_meta( $post_id, 'etime', true);
-												$where_event	= wp_get_post_terms($post_id,'where_event', array('fields' => 'names' ) );
-												$music 	    	= wp_get_post_terms($post_id,'music_event', array('fields' => 'names' ) );
-												$category   	= wp_get_post_terms($post_id,'category_event', array('fields' => 'names' ) );
-												$thumbnail_id 	= get_post_thumbnail_id($post_id);
-							        			$x 			  	= wp_get_attachment_image_url($thumbnail_id, 'home-slide-img-mobile',true);
-												$status 	  	= get_post_status ( $post_id );
-												$post_date 	  	= get_the_date( 'F j, Y' );
-												?>
+			$counter = 1;
+			if ( $the_query->have_posts() ) {
+      			while ( $the_query->have_posts() ) {
+      				$the_query->the_post();
+						$divcalss = "col span_4 onclick_full_width one-fourths clear-both";
+						if($counter%3 ==0)
+						$divcalss = "col span_4 col_last onclick_full_width";
+						$post_id 		= get_the_ID();
+						$title 			= get_the_title();
+						$descrip    	= get_the_content();
+						$event_date 	= get_post_meta( $post_id, 'edate', true);
+						$event_stime	= get_post_meta( $post_id, 'stime', true);
+						$event_etime 	= get_post_meta( $post_id, 'etime', true);
+						$where_event	= wp_get_post_terms($post_id,'where_event', array('fields' => 'names' ) );
+						$music 	    	= wp_get_post_terms($post_id,'music_event', array('fields' => 'names' ) );
+						$category   	= wp_get_post_terms($post_id,'category_event', array('fields' => 'names' ) );
+						$thumbnail_id 	= get_post_thumbnail_id($post_id);
+	        			$x 			  	= wp_get_attachment_image_url($thumbnail_id, 'home-slide-img-mobile',true);
+						$status 	  	= get_post_status ( $post_id );
+						$post_date 	  	= get_the_date( 'F j, Y' );
+						?>
 
 
 						<div class="<?= $divcalss; ?>">
